@@ -17,6 +17,7 @@
 
 (defun spacemacs//julia-setup-buffer ()
   "Configure julia-mode"
+  (spacemacs//julia-setup-prettify-symbols)
   (when (not julia-mode-enable-ess)
     (spacemacs//julia-setup-repl)))
 
@@ -56,3 +57,8 @@
                      :fuzzy-match t
                      :action (lambda (candidate) (insert candidate)))
           :buffer "*helm julia latex insert*")))
+
+(defun spacemacs//julia-setup-prettify-symbols ()
+  (setq prettify-symbols-alist
+        (nconc prettify-symbols-alist
+               '(("|>" . ?▸)))))
